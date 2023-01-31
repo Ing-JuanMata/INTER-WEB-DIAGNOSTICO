@@ -1,0 +1,18 @@
+<main>
+  <h1>LOGIN</h1>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="field">
+      <label for="username">username</label>
+      <input type="text" id="username" formControlName="username">
+    </div>
+    <div class="field">
+      <label for="password">password</label>
+      <input type="password" id="password" formControlName="password">
+    </div>
+    <ng-container *ngIf="loggFail">
+      <p>Usuario o contraseña incorrectos</p>
+    </ng-container>
+    <button type="submit" [disabled]="userForm.invalid">Ingresar</button>
+    <a routerLink="/signup">Registrar</a>
+  </form>
+</main>

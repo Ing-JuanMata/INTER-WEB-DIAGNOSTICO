@@ -1,0 +1,39 @@
+<h1>Registro</h1>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div class="field">
+    <label for="username">username</label>
+    <input type="text" id="username" formControlName="username">
+    <ng-container
+      *ngIf="userForm.get('username')?.hasError('required') && (userForm.get('password')?.touched || userForm.get('password')?.dirty)">
+      <p>Se requiere nombre de usuario</p>
+    </ng-container>
+  </div>
+  <div class="field">
+    <label for="rol">rol</label>
+    <select id="rol" formControlName="rol">
+      <option value="admin">admin</option>
+      <option value="user">user</option>
+    </select>
+    <ng-container
+      *ngIf="userForm.get('username')?.hasError('required') && (userForm.get('password')?.touched || userForm.get('password')?.dirty)">
+      <p>Se requiere nombre de usuario</p>
+    </ng-container>
+  </div>
+  <div class="field">
+    <label for="password">password</label>
+    <input type="password" id="password" formControlName="password">
+    <ng-container
+      *ngIf="userForm.get('password')?.hasError('required') && (userForm.get('password')?.touched || userForm.get('password')?.dirty)">
+      <p>Se requiere contraseña</p>
+    </ng-container>
+    <ng-container
+      *ngIf="userForm.get('password')?.hasError('minlength') && (userForm.get('password')?.touched || userForm.get('password')?.dirty)">
+      <p>La contraseña debe ser de por lo menos 4 caracteres</p>
+    </ng-container>
+  </div>
+  <div class="field">
+    <img [src]="userForm.get('photoURL')!!.value" alt="perfil">
+  </div>
+  <button type="submit" [disabled]="userForm.invalid">Registrar</button>
+  <a routerLink="/login">Ingresar</a>
+</form>
