@@ -1,1 +1,26 @@
-<p>admin works!</p>
+<main class="container margin-top">
+  <button class="button button-secondary" routerLink="/">Cerrar sesión</button>
+  <table class="full-width">
+    <thead class="bg-secondary">
+      <tr>
+        <th>Username</th>
+        <th>Rol</th>
+        <th>Password</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody class="bg-primary">
+      <tr *ngFor="let user of users" class="text-center">
+        <td>{{user.username}}</td>
+        <td>{{user.rol}}</td>
+        <td>{{user.password}}</td>
+        <td>
+          <mat-icon fontIcon="account_circle" [routerLink]="['/', user.rol, user.username]" class="pointer"
+            *ngIf="user.rol === 'user'"></mat-icon>
+          <mat-icon fontIcon="mode_edit" (click)="updateUser(user.uid)" class="pointer"></mat-icon>
+          <mat-icon fontIcon="delete" (click)="deleteUser(user.uid)" class="pointer"></mat-icon>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</main>

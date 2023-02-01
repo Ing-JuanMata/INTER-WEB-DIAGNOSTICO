@@ -1,1 +1,7 @@
-<p>user works!</p>
+<main class="container center">
+  <div><img class="rounded" src="{{user.photoURL}}" alt="foto"></div>
+  <div class="info">
+    <h1 class="text-center">{{user.username}}</h1>
+    <button class="button button-secondary" (click)="logout()">Cerrar sesión</button>
+  </div>
+</main>

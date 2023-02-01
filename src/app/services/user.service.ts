@@ -9,7 +9,7 @@ export class UserService {
   constructor(private store: AngularFirestore) {}
 
   getUsers() {
-    return this.store.collection<User[]>('users');
+    return this.store.collection<User>('users');
   }
 
   getUser(username: string) {

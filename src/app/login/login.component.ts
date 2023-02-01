@@ -31,12 +31,15 @@ export class LoginComponent {
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           if (doc.data().password === this.userForm.value.password) {
-            this.router.navigate(['/', doc.data().rol]);
+            const route = ['/', doc.data().rol];
+            if (doc.data().rol !== 'admin') route.push(doc.data().username);
+            this.router.navigate(route);
             this.loggFail = false;
             return;
           }
           this.loggFail = true;
         });
-      });
+      })
+      .catch((error) => console.log(error));
   }
 }

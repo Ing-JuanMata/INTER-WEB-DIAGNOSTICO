@@ -33,7 +33,10 @@ export class SignUpComponent {
   onSubmit() {
     this.userService
       .createUser(this.userForm.value as User)
-      .then(() => console.log('User created'))
+      .then(() => {
+        alert('Usuario creado correctamente');
+        this.userForm.reset();
+      })
       .catch((error) => console.log(error));
   }
 }
